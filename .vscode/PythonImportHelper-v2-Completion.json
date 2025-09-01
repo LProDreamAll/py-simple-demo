@@ -44,20 +44,119 @@
         "documentation": {}
     },
     {
+        "label": "clock",
+        "kind": 2,
+        "importPath": "decorators_and_closures.closures",
+        "description": "decorators_and_closures.closures",
+        "peekOfCode": "def clock(fmt=DEFAULT_FMT): # clock是参数化装饰器的工厂函数\n    def decorate(func):     # 真正的装饰器 \n        def clocked(*_args):  # 包装被装饰的函数 \n            t0 = time.perf_counter()\n            print(type(_args))\n            _result = func(*_args)  # 调用被装饰的函数\n            elapsed = time.perf_counter() - t0\n            name = func.__name__\n            args = ', '.join(repr(arg) for arg in _args) \n            result = repr(_result)  ",
+        "detail": "decorators_and_closures.closures",
+        "documentation": {}
+    },
+    {
+        "label": "snooze",
+        "kind": 2,
+        "importPath": "decorators_and_closures.closures",
+        "description": "decorators_and_closures.closures",
+        "peekOfCode": "def snooze(seconds):\n    time.sleep(seconds)\n@clock\ndef factorial(n):\n    return 1 if n < 2 else n*factorial(n-1)    \n# 一个计算累计平均值的高阶函数，所有值存储在历史数列series中\ndef make_averager():\n    series = []    \n    def averager(new_value):\n        series.append(new_value)",
+        "detail": "decorators_and_closures.closures",
+        "documentation": {}
+    },
+    {
+        "label": "factorial",
+        "kind": 2,
+        "importPath": "decorators_and_closures.closures",
+        "description": "decorators_and_closures.closures",
+        "peekOfCode": "def factorial(n):\n    return 1 if n < 2 else n*factorial(n-1)    \n# 一个计算累计平均值的高阶函数，所有值存储在历史数列series中\ndef make_averager():\n    series = []    \n    def averager(new_value):\n        series.append(new_value)\n        total = sum(series)\n        return total / len(series)\n    return averager",
+        "detail": "decorators_and_closures.closures",
+        "documentation": {}
+    },
+    {
+        "label": "make_averager",
+        "kind": 2,
+        "importPath": "decorators_and_closures.closures",
+        "description": "decorators_and_closures.closures",
+        "peekOfCode": "def make_averager():\n    series = []    \n    def averager(new_value):\n        series.append(new_value)\n        total = sum(series)\n        return total / len(series)\n    return averager\nif __name__ == '__main__':\n    # avg = make_averager()\n    # print(avg(10))",
+        "detail": "decorators_and_closures.closures",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_FMT",
+        "kind": 5,
+        "importPath": "decorators_and_closures.closures",
+        "description": "decorators_and_closures.closures",
+        "peekOfCode": "DEFAULT_FMT = '[{elapsed:0.8f}s] {name}({args}) -> {result}'\ndef clock(fmt=DEFAULT_FMT): # clock是参数化装饰器的工厂函数\n    def decorate(func):     # 真正的装饰器 \n        def clocked(*_args):  # 包装被装饰的函数 \n            t0 = time.perf_counter()\n            print(type(_args))\n            _result = func(*_args)  # 调用被装饰的函数\n            elapsed = time.perf_counter() - t0\n            name = func.__name__\n            args = ', '.join(repr(arg) for arg in _args) ",
+        "detail": "decorators_and_closures.closures",
+        "documentation": {}
+    },
+    {
+        "label": "deco",
+        "kind": 2,
+        "importPath": "decorators_and_closures.decorators_demo",
+        "description": "decorators_and_closures.decorators_demo",
+        "peekOfCode": "def deco(func):\n    def inner():\n        func()\n        print('running inner')\n    return inner\n@deco\ndef target():\n    print('running target()')\nif __name__ == '__main__':\n    target()",
+        "detail": "decorators_and_closures.decorators_demo",
+        "documentation": {}
+    },
+    {
+        "label": "target",
+        "kind": 2,
+        "importPath": "decorators_and_closures.decorators_demo",
+        "description": "decorators_and_closures.decorators_demo",
+        "peekOfCode": "def target():\n    print('running target()')\nif __name__ == '__main__':\n    target()",
+        "detail": "decorators_and_closures.decorators_demo",
+        "documentation": {}
+    },
+    {
+        "label": "Root",
+        "kind": 6,
+        "importPath": "extends_demo.demo",
+        "description": "extends_demo.demo",
+        "peekOfCode": "class Root:\n    def ping(self):\n        print(f'{self}.ping() in Root')\n    def pong(self):\n        print(f'{self}.pong() in Root')\n    def __repr__(self):\n        cls_name = type(self).__name__\n        return f'<instance of {cls_name}>'\nclass A(Root):  \n    def ping(self):",
+        "detail": "extends_demo.demo",
+        "documentation": {}
+    },
+    {
+        "label": "A",
+        "kind": 6,
+        "importPath": "extends_demo.demo",
+        "description": "extends_demo.demo",
+        "peekOfCode": "class A(Root):  \n    def ping(self):\n        print(f'{self}.ping() in A')\n        super().ping()\n    def pong(self):\n        print(f'{self}.pong() in A')\n        super().pong()\nclass B(Root):  \n    def ping(self):\n        print(f'{self}.ping() in B')",
+        "detail": "extends_demo.demo",
+        "documentation": {}
+    },
+    {
+        "label": "B",
+        "kind": 6,
+        "importPath": "extends_demo.demo",
+        "description": "extends_demo.demo",
+        "peekOfCode": "class B(Root):  \n    def ping(self):\n        print(f'{self}.ping() in B')\n        super().ping()\n    def pong(self):\n        print(f'{self}.pong() in B')\nclass Leaf(A, B):  \n    def ping(self):\n        print(f'{self}.ping() in Leaf')\n        super().ping()",
+        "detail": "extends_demo.demo",
+        "documentation": {}
+    },
+    {
+        "label": "Leaf",
+        "kind": 6,
+        "importPath": "extends_demo.demo",
+        "description": "extends_demo.demo",
+        "peekOfCode": "class Leaf(A, B):  \n    def ping(self):\n        print(f'{self}.ping() in Leaf')\n        super().ping()\nif __name__ == '__main__':\n    leaf = Leaf()\n    leaf.ping()\n    # leaf.pong()",
+        "detail": "extends_demo.demo",
+        "documentation": {}
+    },
+    {
         "label": "square",
         "kind": 2,
         "importPath": "map_reduce_filter_demo.demo",
         "description": "map_reduce_filter_demo.demo",
-        "peekOfCode": "def square(x):\n    return x **2\ndef map_demo() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(square, numbers)\n    print(result_map)\n    print(list(result_map))\ndef map_demo_lambda() -> None:\n    \"\"\"Demonstrate map()\"\"\"",
+        "peekOfCode": "def square(x):\n    return x **2\ndef map_demo1() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(square, numbers)\n    print(result_map)\n    print(list(result_map))\ndef map_demo_lambda() -> None:\n    \"\"\"Demonstrate map()\"\"\"",
         "detail": "map_reduce_filter_demo.demo",
         "documentation": {}
     },
     {
-        "label": "map_demo",
+        "label": "map_demo1",
         "kind": 2,
         "importPath": "map_reduce_filter_demo.demo",
         "description": "map_reduce_filter_demo.demo",
-        "peekOfCode": "def map_demo() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(square, numbers)\n    print(result_map)\n    print(list(result_map))\ndef map_demo_lambda() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(lambda x: x **2, numbers)",
+        "peekOfCode": "def map_demo1() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(square, numbers)\n    print(result_map)\n    print(list(result_map))\ndef map_demo_lambda() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(lambda x: x **2, numbers)",
         "detail": "map_reduce_filter_demo.demo",
         "documentation": {}
     },

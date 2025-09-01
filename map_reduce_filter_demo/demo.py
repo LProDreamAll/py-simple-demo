@@ -6,7 +6,7 @@ def square(x):
     return x **2
 
 
-def map_demo() -> None:
+def map_demo1() -> None:
     """Demonstrate map()"""
     numbers = [1, 2, 3, 4, 5]
     result_map = map(square, numbers)
