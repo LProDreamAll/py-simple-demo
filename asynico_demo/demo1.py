@@ -2,6 +2,30 @@ import asyncio
 import threading
 import time
 
+# 任务取消
+async def cancel_me():
+    print('cancel_me(): before sleep')
+
+    try:
+        # 等待 1 小时
+        await asyncio.sleep(3600)
+    except asyncio.CancelledError:
+        print('cancel_me(): cancel sleep')
+        raise
+    finally:
+        print('cancel_me(): after sleep')
+
+async def cancel_task():
+    task = asyncio.create_task(cancel_me())
+    # 等待 1 秒
+    await asyncio.sleep(1)
+    task.cancel()
+    try:
+        await task
+    except asyncio.CancelledError:
+        print(f'cancel_task(): {task!r} was canceled')
+
+# 跨线程调度
 
 # 在线程中运行
 def blocking_io():
@@ -11,11 +35,17 @@ def blocking_io():
     time.sleep(1)
     print(f"blocking_io complete at {time.strftime('%X')}")
     
+async def blocking_demo2():
+    print(f"start blocking_demo2 at {time.strftime('%X')}")
+    # 请注意 time.sleep() 可被替换为任意一种
+    # 阻塞式 IO 密集型操作，例如文件操作。
+    time.sleep(1)
+    print(f"blocking_demo2 complete at {time.strftime('%X')}")    
 async def run_blocking_io():
     print(f"started main at {time.strftime('%X')}")
     await asyncio.gather(
         asyncio.to_thread(blocking_io),
-        asyncio.sleep(1))
+        blocking_demo2())
 
     print(f"finished main at {time.strftime('%X')}")    
 
@@ -42,5 +72,6 @@ async def main():
 
 if __name__ == "__main__":
     # asyncio.run(main())
-    asyncio.run(run_blocking_io())
+    # asyncio.run(run_blocking_io())
+    asyncio.run(cancel_task())
     

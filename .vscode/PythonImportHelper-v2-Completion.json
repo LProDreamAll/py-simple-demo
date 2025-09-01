@@ -27,12 +27,74 @@
         "documentation": {}
     },
     {
+        "label": "reduce",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
         "label": "blocking_io",
         "kind": 2,
         "importPath": "asynico_demo.demo1",
         "description": "asynico_demo.demo1",
-        "peekOfCode": "def blocking_io():\n    print(f\"start blocking_io at {time.strftime('%X')}\")\n    # 请注意 time.sleep() 可被替换为任意一种\n    # 阻塞式 IO 密集型操作，例如文件操作。\n    time.sleep(1)\n    print(f\"blocking_io complete at {time.strftime('%X')}\")\nasync def run_blocking_io():\n    print(f\"started main at {time.strftime('%X')}\")\n    await asyncio.gather(\n        asyncio.to_thread(blocking_io),",
+        "peekOfCode": "def blocking_io():\n    print(f\"start blocking_io at {time.strftime('%X')}\")\n    # 请注意 time.sleep() 可被替换为任意一种\n    # 阻塞式 IO 密集型操作，例如文件操作。\n    time.sleep(1)\n    print(f\"blocking_io complete at {time.strftime('%X')}\")\nasync def blocking_demo2():\n    print(f\"start blocking_demo2 at {time.strftime('%X')}\")\n    # 请注意 time.sleep() 可被替换为任意一种\n    # 阻塞式 IO 密集型操作，例如文件操作。",
         "detail": "asynico_demo.demo1",
+        "documentation": {}
+    },
+    {
+        "label": "square",
+        "kind": 2,
+        "importPath": "map_reduce_filter_demo.demo",
+        "description": "map_reduce_filter_demo.demo",
+        "peekOfCode": "def square(x):\n    return x **2\ndef map_demo() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(square, numbers)\n    print(result_map)\n    print(list(result_map))\ndef map_demo_lambda() -> None:\n    \"\"\"Demonstrate map()\"\"\"",
+        "detail": "map_reduce_filter_demo.demo",
+        "documentation": {}
+    },
+    {
+        "label": "map_demo",
+        "kind": 2,
+        "importPath": "map_reduce_filter_demo.demo",
+        "description": "map_reduce_filter_demo.demo",
+        "peekOfCode": "def map_demo() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(square, numbers)\n    print(result_map)\n    print(list(result_map))\ndef map_demo_lambda() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(lambda x: x **2, numbers)",
+        "detail": "map_reduce_filter_demo.demo",
+        "documentation": {}
+    },
+    {
+        "label": "map_demo_lambda",
+        "kind": 2,
+        "importPath": "map_reduce_filter_demo.demo",
+        "description": "map_reduce_filter_demo.demo",
+        "peekOfCode": "def map_demo_lambda() -> None:\n    \"\"\"Demonstrate map()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    result_map = map(lambda x: x **2, numbers)\n    print(result_map)\n    print(list(result_map))\ndef map_demo1() -> None:\n   words = [\"apple\", \"banana\", \"cherry\"]\n   result = map(lambda s: s.upper(), words)\n   print(list(result))",
+        "detail": "map_reduce_filter_demo.demo",
+        "documentation": {}
+    },
+    {
+        "label": "map_demo1",
+        "kind": 2,
+        "importPath": "map_reduce_filter_demo.demo",
+        "description": "map_reduce_filter_demo.demo",
+        "peekOfCode": "def map_demo1() -> None:\n   words = [\"apple\", \"banana\", \"cherry\"]\n   result = map(lambda s: s.upper(), words)\n   print(list(result))\ndef add(x, y):\n    return x + y\n# reduce(function, iterable[, initial])\ndef reduce_demo() -> None:\n    \"\"\"Demonstrate reduce()\"\"\"\n    numbers = [1, 2, 3, 4, 5]",
+        "detail": "map_reduce_filter_demo.demo",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "map_reduce_filter_demo.demo",
+        "description": "map_reduce_filter_demo.demo",
+        "peekOfCode": "def add(x, y):\n    return x + y\n# reduce(function, iterable[, initial])\ndef reduce_demo() -> None:\n    \"\"\"Demonstrate reduce()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    # 1. 计算列表中所有元素的和\n    result_sum = reduce(add, numbers)\n    print(result_sum)\n    result_reduce = reduce(lambda x, y: x + y, numbers)",
+        "detail": "map_reduce_filter_demo.demo",
+        "documentation": {}
+    },
+    {
+        "label": "reduce_demo",
+        "kind": 2,
+        "importPath": "map_reduce_filter_demo.demo",
+        "description": "map_reduce_filter_demo.demo",
+        "peekOfCode": "def reduce_demo() -> None:\n    \"\"\"Demonstrate reduce()\"\"\"\n    numbers = [1, 2, 3, 4, 5]\n    # 1. 计算列表中所有元素的和\n    result_sum = reduce(add, numbers)\n    print(result_sum)\n    result_reduce = reduce(lambda x, y: x + y, numbers)\n    print(result_reduce)\nif __name__ == '__main__':\n    # map_demo()",
+        "detail": "map_reduce_filter_demo.demo",
         "documentation": {}
     },
     {
