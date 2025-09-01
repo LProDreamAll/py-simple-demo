@@ -1,0 +1,56 @@
+[
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "blocking_io",
+        "kind": 2,
+        "importPath": "asynico_demo.demo1",
+        "description": "asynico_demo.demo1",
+        "peekOfCode": "def blocking_io():\n    print(f\"start blocking_io at {time.strftime('%X')}\")\n    # 请注意 time.sleep() 可被替换为任意一种\n    # 阻塞式 IO 密集型操作，例如文件操作。\n    time.sleep(1)\n    print(f\"blocking_io complete at {time.strftime('%X')}\")\nasync def run_blocking_io():\n    print(f\"started main at {time.strftime('%X')}\")\n    await asyncio.gather(\n        asyncio.to_thread(blocking_io),",
+        "detail": "asynico_demo.demo1",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "numeric_types_demo.demo",
+        "description": "numeric_types_demo.demo",
+        "peekOfCode": "def main() -> None:\n    print(\"gg\" in \"eggs\")\ndef lists_demo():\n    lists = [[]] * 3 # 所有三个元素都是对这个单个空列表的引用。修改列表的任何元素都会修改此单个列表\n    print(lists)\n    lists[0].append(1)\n    print(lists)\n    lists = [[] for i in range(3)] # 每个元素都是一个独立的空列表\n    print(lists)\n    lists[0].append(0)",
+        "detail": "numeric_types_demo.demo",
+        "documentation": {}
+    },
+    {
+        "label": "lists_demo",
+        "kind": 2,
+        "importPath": "numeric_types_demo.demo",
+        "description": "numeric_types_demo.demo",
+        "peekOfCode": "def lists_demo():\n    lists = [[]] * 3 # 所有三个元素都是对这个单个空列表的引用。修改列表的任何元素都会修改此单个列表\n    print(lists)\n    lists[0].append(1)\n    print(lists)\n    lists = [[] for i in range(3)] # 每个元素都是一个独立的空列表\n    print(lists)\n    lists[0].append(0)\n    print(lists)\n    lists[1].append(1)",
+        "detail": "numeric_types_demo.demo",
+        "documentation": {}
+    }
+]
